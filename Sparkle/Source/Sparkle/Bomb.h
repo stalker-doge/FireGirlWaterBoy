@@ -23,10 +23,22 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	TMap<int32, FString> FruitMap;
 
-	TMap<FString, FString> rulesArray;
+	TMap<FString, FString> rulesDictionary;//what wires to cut
+	TMap<int, FString> cutDictionary;// how many wires to cut
+	//array for values of rules and number of wires to cut for easy access
+	TArray<FString> rulesArray;
+	TArray<int> cutArray;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bomb")
+		int32 bombTimer;
+
+        UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bomb")
+		int32 cutWire;
+
+		//array of wires
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bomb")
+		TArray<FString> wireArray;
 
 
 };
