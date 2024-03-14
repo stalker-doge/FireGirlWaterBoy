@@ -21,16 +21,16 @@ ABomb::ABomb()
 	rulesDictionary.Add(TEXT("J"), TEXT("FAKE Wire"));
 
 
-	cutDictionary.Add(1, TEXT("3 wires"));
-	cutDictionary.Add(2, TEXT("2 wires"));
-	cutDictionary.Add(3, TEXT("1 wire"));
-	cutDictionary.Add(4, TEXT("5 wires"));
-	cutDictionary.Add(5, TEXT("4 wires"));
-	cutDictionary.Add(6, TEXT("3 wires"));
-	cutDictionary.Add(7, TEXT("2 wires"));
-	cutDictionary.Add(8, TEXT("2 wires"));
-	cutDictionary.Add(9, TEXT("1 wires"));
-	cutDictionary.Add(0, TEXT("4 wires"));
+	cutDictionary.Add(1,3);
+	cutDictionary.Add(2,2);
+	cutDictionary.Add(3,1);
+	cutDictionary.Add(4,5);
+	cutDictionary.Add(5,4);
+	cutDictionary.Add(6,3);
+	cutDictionary.Add(7,2);
+	cutDictionary.Add(8,2);
+	cutDictionary.Add(9,1);
+	cutDictionary.Add(0,4);
 
 
 }
@@ -69,39 +69,38 @@ void ABomb::BeginPlay()
 		{
 			wireArray.Add(rulesDictionary.FindRef(letter));
 			wireCutArray.Add(cutDictionary.FindRef(num));
-
 		}
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Serial Number: %s"), *serialNumber);
+	//UE_LOG(LogTemp, Warning, TEXT("Serial Number: %s"), *serialNumber);
 
-	//works backwards from the serial number in order to print the correct instructions
-	//if a character, it's a colour and if it's a number, it's the number of wires to cut
+	////works backwards from the serial number in order to print the correct instructions
+	////if a character, it's a colour and if it's a number, it's the number of wires to cut
 
-	//first, get the last character of the serial number
-	TCHAR lastChar = serialNumber[serialNumber.Len() - 1];
-	//if it's a number, print the number of wires to cut
-	if (lastChar >= 48 && lastChar <= 57) {
-		UE_LOG(LogTemp, Warning, TEXT("Cut %s wires"), *cutDictionary[lastChar - 48]);
-	}
-	//if it's a character, print the colour of the wire to cut
-	else {
-		UE_LOG(LogTemp, Warning, TEXT("Cut the %s wire"), *rulesDictionary[letter]);
-	}
-	//repeat this process for the rest of the serial number
-	for (int i = serialNumber.Len() - 2; i >= 0; i--) {
-		TCHAR character = serialNumber[i];
-		if (character >= 48 && character <= 57) {
-			UE_LOG(LogTemp, Warning, TEXT("Cut %s wires"), *cutDictionary[character - 48]);
-		}
-		else {
-			//convert the character to a string and print the colour of the wire to cut
-			FString fletter = FString(1, &character);
-			UE_LOG(LogTemp, Warning, TEXT("Cut the %s wire"), *rulesDictionary[fletter]);
+	////first, get the last character of the serial number
+	//TCHAR lastChar = serialNumber[serialNumber.Len() - 1];
+	////if it's a number, print the number of wires to cut
+	//if (lastChar >= 48 && lastChar <= 57) {
+	//	UE_LOG(LogTemp, Warning, TEXT("Cut %s wires"), *cutDictionary[lastChar - 48]);
+	//}
+	////if it's a character, print the colour of the wire to cut
+	//else {
+	//	UE_LOG(LogTemp, Warning, TEXT("Cut the %s wire"), *rulesDictionary[letter]);
+	//}
+	////repeat this process for the rest of the serial number
+	//for (int i = serialNumber.Len() - 2; i >= 0; i--) {
+	//	TCHAR character = serialNumber[i];
+	//	if (character >= 48 && character <= 57) {
+	//		UE_LOG(LogTemp, Warning, TEXT("Cut %s wires"), *cutDictionary[character - 48]);
+	//	}
+	//	else {
+	//		//convert the character to a string and print the colour of the wire to cut
+	//		FString fletter = FString(1, &character);
+	//		UE_LOG(LogTemp, Warning, TEXT("Cut the %s wire"), *rulesDictionary[fletter]);
 
-		}
-	}
-	
+	//	}
+	//}
+	//
 
 }
 

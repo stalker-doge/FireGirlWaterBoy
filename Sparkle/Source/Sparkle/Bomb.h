@@ -25,7 +25,7 @@ public:
 
 
 	TMap<FString, FString> rulesDictionary;//what wires to cut
-	TMap<int, FString> cutDictionary;// how many wires to cut
+	TMap<int, int> cutDictionary;// how many wires to cut
 	//array for values of rules and number of wires to cut for easy access
 	TArray<FString> rulesArray;
 	TArray<int> cutArray;
@@ -41,7 +41,7 @@ public:
 		TArray<FString> wireArray;
 	//array of how many wires 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bomb")
-		TArray<FString> wireCutArray;
+		TArray<int> wireCutArray;
 
 
 
