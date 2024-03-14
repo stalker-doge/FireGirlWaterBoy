@@ -21,11 +21,23 @@ public class CodeDecryptor : MonoBehaviour
         wireColour.Add('C', "GREEN Wire");
         wireColour.Add('D', "YELLOW Wire");
         wireColour.Add('E', "WHITE Wire");
+        wireColour.Add('F', "GOLD Wire");
+        wireColour.Add('G', "FAKE Wire");
+        wireColour.Add('H', "FAKE Wire");
+        wireColour.Add('I', "FAKE Wire");
+        wireColour.Add('J', "FAKE Wire");
+
         wireCut.Add(1, "3 wires");
         wireCut.Add(2, "2 wires");
         wireCut.Add(3, "1 wire");
         wireCut.Add(4, "5 wires");
         wireCut.Add(5, "4 wires");
+        wireCut.Add(6, "3 wires");
+        wireCut.Add(7, "2 wires");
+        wireCut.Add(8, "2 wires");
+        wireCut.Add(9, "1 wires");
+        wireCut.Add(0, "4 wires");
+
         DecryptCode();
     }
 
