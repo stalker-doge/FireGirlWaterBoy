@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main book scene.unity
     guid: b7826145cee425d4fb1fd093891436ea
+  - enabled: 1
+    path: Assets/Scenes/Decryptor.unity
+    guid: 3ec9f39459ced7546b38628d9d565130
   m_configObjects: {}

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class CodeDecryptor : MonoBehaviour
@@ -11,6 +13,7 @@ public class CodeDecryptor : MonoBehaviour
 
     public string userSerialCode;
 
+    [SerializeField] TextMeshProUGUI textMeshPro;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +22,7 @@ public class CodeDecryptor : MonoBehaviour
         wireColour.Add('A', "RED Wire");
         wireColour.Add('B', "BLUE Wire");
         wireColour.Add('C', "GREEN Wire");
-        wireColour.Add('D', "YELLOW Wire");
+        wireColour.Add('D', "FAKE Wire");
         wireColour.Add('E', "WHITE Wire");
         wireColour.Add('F', "GOLD Wire");
         wireColour.Add('G', "FAKE Wire");
@@ -27,18 +30,16 @@ public class CodeDecryptor : MonoBehaviour
         wireColour.Add('I', "FAKE Wire");
         wireColour.Add('J', "FAKE Wire");
 
-        wireCut.Add(1, "3 wires");
+        wireCut.Add(1, "1 wires");
         wireCut.Add(2, "2 wires");
         wireCut.Add(3, "1 wire");
-        wireCut.Add(4, "5 wires");
-        wireCut.Add(5, "4 wires");
-        wireCut.Add(6, "3 wires");
+        wireCut.Add(4, "2 wires");
+        wireCut.Add(5, "1 wires");
+        wireCut.Add(6, "2 wires");
         wireCut.Add(7, "2 wires");
         wireCut.Add(8, "2 wires");
         wireCut.Add(9, "1 wires");
-        wireCut.Add(0, "4 wires");
-
-        DecryptCode();
+        wireCut.Add(0, "1 wires");
     }
 
     // Update is called once per frame
@@ -47,36 +48,36 @@ public class CodeDecryptor : MonoBehaviour
         
     }
 
-    public void DecryptCode()
+    public void DecryptCode(string Code)
     {
+        Debug.Log(Code);
+        StringBuilder builder = new StringBuilder();
         //convert the serial code to a set of instructions, all serial codes follow the format of letter number and so on
-        for (int i = 0; i < userSerialCode.Length; i++)
+        for (int i = 0; i < Code.Length; i++)
         {
             if (i % 2 == 0)
             {
-                char currentChar = userSerialCode[i];
+                char currentChar = Code[i];
                 if (wireColour.ContainsKey(currentChar))
                 {
-                    Debug.Log("Cut the " + wireColour[currentChar]);
-                }
-                else
-                {
-                    Debug.Log("Invalid character detected");
+                    if (wireColour[currentChar].ToString() != "FAKE Wire")
+                    {
+                        Debug.Log("Cut the " + wireColour[currentChar]);
+                        builder.Append("Cut the " + wireColour[currentChar] + " ");
+                    }
+
                 }
             }
             else
             {
-                int currentInt = (int)char.GetNumericValue(userSerialCode[i]);
+                int currentInt = (int)char.GetNumericValue(Code[i]);
                 if (wireCut.ContainsKey(currentInt))
                 {
                     Debug.Log("Cut " + wireCut[currentInt]);
-                }
-                else
-                {
-                    Debug.Log("Invalid number detected");
+                    builder.Append(wireCut[currentInt] + " times \n");
                 }
             }
         }
-
+        textMeshPro.text = builder.ToString();
     }
 }
