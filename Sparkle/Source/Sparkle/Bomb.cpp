@@ -12,7 +12,7 @@ ABomb::ABomb()
 	rulesDictionary.Add(TEXT("A"), TEXT("RED Wire"));
 	rulesDictionary.Add(TEXT("B"), TEXT("BLUE Wire"));
 	rulesDictionary.Add(TEXT("C"), TEXT("GREEN Wire"));
-	rulesDictionary.Add(TEXT("D"), TEXT("YELLOW Wire"));
+	rulesDictionary.Add(TEXT("D"), TEXT("FAKE Wire"));
 	rulesDictionary.Add(TEXT("E"), TEXT("WHITE Wire"));
 	rulesDictionary.Add(TEXT("F"), TEXT("GOLD Wire"));
 	rulesDictionary.Add(TEXT("G"), TEXT("FAKE Wire"));
@@ -21,16 +21,16 @@ ABomb::ABomb()
 	rulesDictionary.Add(TEXT("J"), TEXT("FAKE Wire"));
 
 
-	cutDictionary.Add(1,3);
+	cutDictionary.Add(1,1);
 	cutDictionary.Add(2,2);
 	cutDictionary.Add(3,1);
-	cutDictionary.Add(4,5);
-	cutDictionary.Add(5,4);
-	cutDictionary.Add(6,3);
+	cutDictionary.Add(4,2);
+	cutDictionary.Add(5,1);
+	cutDictionary.Add(6,2);
 	cutDictionary.Add(7,2);
 	cutDictionary.Add(8,2);
 	cutDictionary.Add(9,1);
-	cutDictionary.Add(0,4);
+	cutDictionary.Add(0,1);
 
 
 }
