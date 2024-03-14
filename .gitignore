@@ -125,3 +125,4 @@ Build/Android/res/*/*
 # Ignore plugins binaries on deep subfolders
 Sparkle/Plugins/**/Binaries/*
 Sparkle/Plugins/**/Intermediate/*
+Sparkle/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset
