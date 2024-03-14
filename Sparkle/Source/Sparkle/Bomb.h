@@ -39,6 +39,13 @@ public:
 		//array of wires
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bomb")
 		TArray<FString> wireArray;
+	//array of how many wires 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bomb")
+		TArray<FString> wireCutArray;
 
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bomb")
+		FString serialNumber;
 
 };

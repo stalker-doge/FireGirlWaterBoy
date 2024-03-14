@@ -14,12 +14,24 @@ ABomb::ABomb()
 	rulesDictionary.Add(TEXT("C"), TEXT("GREEN Wire"));
 	rulesDictionary.Add(TEXT("D"), TEXT("YELLOW Wire"));
 	rulesDictionary.Add(TEXT("E"), TEXT("WHITE Wire"));
+	rulesDictionary.Add(TEXT("F"), TEXT("GOLD Wire"));
+	rulesDictionary.Add(TEXT("G"), TEXT("FAKE Wire"));
+	rulesDictionary.Add(TEXT("H"), TEXT("FAKE Wire"));
+	rulesDictionary.Add(TEXT("I"), TEXT("FAKE Wire"));
+	rulesDictionary.Add(TEXT("J"), TEXT("FAKE Wire"));
+
 
 	cutDictionary.Add(1, TEXT("3 wires"));
 	cutDictionary.Add(2, TEXT("2 wires"));
 	cutDictionary.Add(3, TEXT("1 wire"));
 	cutDictionary.Add(4, TEXT("5 wires"));
 	cutDictionary.Add(5, TEXT("4 wires"));
+	cutDictionary.Add(6, TEXT("3 wires"));
+	cutDictionary.Add(7, TEXT("2 wires"));
+	cutDictionary.Add(8, TEXT("2 wires"));
+	cutDictionary.Add(9, TEXT("1 wires"));
+	cutDictionary.Add(0, TEXT("4 wires"));
+
 
 }
 
@@ -38,8 +50,14 @@ void ABomb::BeginPlay()
 	int32 num;
 	cutDictionary.GenerateKeyArray(cutArray);
 	num = cutArray[randomNum];
+	if (!rulesDictionary.Find(letter)->Contains("FAKE"))
+	{
+		wireArray.Add(rulesDictionary.FindRef(letter));
+		wireCutArray.Add(cutDictionary.FindRef(num));
+
+	}
 	//create the serial number by combining the letter and number
-	FString serialNumber = letter + FString::FromInt(num);
+	serialNumber = letter + FString::FromInt(num);
 	//repeats this process 5 times to create a 5 digit serial number
 	for (int i = 0; i < 5; i++) {
 		randomLetter = FMath::RandRange(0, rulesDictionary.Num() - 1);
@@ -47,6 +65,12 @@ void ABomb::BeginPlay()
 		randomNum = FMath::RandRange(0, cutDictionary.Num() - 1);
 		num = cutArray[randomNum];
 		serialNumber += letter + FString::FromInt(num);
+		if (!rulesDictionary.Find(letter)->Contains("FAKE"))
+		{
+			wireArray.Add(rulesDictionary.FindRef(letter));
+			wireCutArray.Add(cutDictionary.FindRef(num));
+
+		}
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("Serial Number: %s"), *serialNumber);
